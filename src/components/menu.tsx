@@ -1,15 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import type { RootState } from '../app/store'
 import { useSelector, useDispatch } from 'react-redux'
 import { storeName, storeQuiz, storeTest } from './../features/quiz/quizSlice'
+import { AppCtx } from './../context/fetch_URL'
 
 function Menu() {
 
     const quiz = useSelector((state: RootState) => state.quiz);
     const dispatch = useDispatch();
 
+    const url = useContext(AppCtx)?.url;
+
         useEffect(() => {
-            fetch("http://localhost:8080/quiz/tests", {
+            fetch(url + "/quiz/tests", {
                 method: "get",
                 mode: 'cors',
             })
@@ -28,8 +31,8 @@ function Menu() {
         const input_name = event.target.name;
         const input_value = event.target.value;
 
-        if (input_name == "user_name") dispatch(storeName(input_value));
-        if (input_name == "user_quiz") dispatch(storeTest(input_value));
+        if (input_name === "user_name") dispatch(storeName(input_value));
+        if (input_name === "user_quiz") dispatch(storeTest(input_value));
     }
 
     console.log(quiz);
