@@ -28,10 +28,13 @@ export const quizSlice = createSlice({
         },
         storeTest: (state, action: PayloadAction<number>) => {
             state.selected_test = action.payload;
+        },
+        storeMessage: (state, action: PayloadAction<string>) => {
+            state.message = action.payload;
         }
     }
 })
 
-export const { storeQuiz,storeName, storeTest } = quizSlice.actions
+export const { storeQuiz,storeName, storeTest, storeMessage } = quizSlice.actions
 
 export default quizSlice.reducer

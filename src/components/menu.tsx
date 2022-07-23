@@ -1,15 +1,27 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useContext } from 'react'
 import type { RootState } from '../app/store'
 import { useSelector, useDispatch } from 'react-redux'
-import { storeName, storeQuiz, storeTest } from './../features/quiz/quizSlice'
+import { storeName, storeQuiz, storeTest, storeMessage } from './../features/quiz/quizSlice'
 import { AppCtx } from './../context/fetch_URL'
+import Error from './error'
 
 function Menu() {
+
+    interface body {
+        quiz_id: number,
+        name: string
+    }
 
     const quiz = useSelector((state: RootState) => state.quiz);
     const dispatch = useDispatch();
 
-    const url = useContext(AppCtx)?.url;
+    const url: string | undefined = useContext(AppCtx)?.url;
+    const error: String = quiz.message;
+    const body: body = {
+        quiz_id: quiz.selected_test,
+        name: quiz.user_name      
+        }
+
 
         useEffect(() => {
             fetch(url + "/quiz/tests", {
@@ -22,8 +34,18 @@ function Menu() {
         }, []);
 
     function handleSubmit(event: any): void {
+        fetch(url + "/quiz/getName", {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        })
+            .then(res => res.json())
+            .then(res => dispatch(storeMessage(res.message)))
+            .catch(err => console.log(err))
 
-        console.log("Submitted");
         event.preventDefault();
     }
 
@@ -34,8 +56,6 @@ function Menu() {
         if (input_name === "user_name") dispatch(storeName(input_value));
         if (input_name === "user_quiz") dispatch(storeTest(input_value));
     }
-
-    console.log(quiz);
 
     return (
         <div>
@@ -53,7 +73,8 @@ function Menu() {
                         { test.quiz_name }
                     </option>
                 })}
-            </select>
+                </select>
+                <Error error={ error }/>
                 <button type='submit'>Start</button>
           </form>           
         </div>
