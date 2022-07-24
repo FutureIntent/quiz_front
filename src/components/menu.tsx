@@ -7,7 +7,7 @@ import Error from './error'
 
 function Menu() {
 
-    interface body {
+    interface Body {
         quiz_id: number,
         name: string
     }
@@ -16,8 +16,8 @@ function Menu() {
     const dispatch = useDispatch();
 
     const url: string | undefined = useContext(AppCtx)?.url;
-    const error: String = quiz.message;
-    const body: body = {
+    const error: string = quiz.message;
+    const body: Body = {
         quiz_id: quiz.selected_test,
         name: quiz.user_name      
         }
@@ -42,8 +42,19 @@ function Menu() {
             },
             body: JSON.stringify(body)
         })
-            .then(res => res.json())
-            .then(res => dispatch(storeMessage(res.message)))
+            .then(async res => {
+                const status = res.ok;
+                const response = await res.json();
+                dispatch(storeMessage(response.message));
+
+                if (status) {
+                    const menu = document.getElementById("menu")!;
+                    const quiz = document.getElementById("quiz")!;
+
+                    menu.style.display = "none";
+                    quiz.style.display = "flex";
+                }
+            })
             .catch(err => console.log(err))
 
         event.preventDefault();
@@ -58,7 +69,7 @@ function Menu() {
     }
 
     return (
-        <div>
+        <div id="menu">
             <p>
                 Technical Task
             </p>

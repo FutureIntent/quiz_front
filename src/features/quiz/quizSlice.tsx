@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
 export interface Quiz {
-    message: String,
+    message: string,
     tests: any[],
     user_name: string,
     selected_test: number
