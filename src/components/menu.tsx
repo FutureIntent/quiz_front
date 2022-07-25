@@ -1,9 +1,10 @@
 import React, { useEffect, useContext } from 'react'
-import type { RootState } from '../app/store'
-import { useSelector, useDispatch } from 'react-redux'
-import { storeName, storeQuiz, storeTest, storeMessage } from './../features/quiz/quizSlice'
-import { AppCtx } from './../context/fetch_URL'
-import Error from './error'
+import type { RootState } from '../app/store';
+import { useSelector, useDispatch } from 'react-redux';
+import { storeName, storeQuiz, storeTest, storeMessage } from './../features/quiz/quizSlice';
+import { AppCtx } from './../context/fetch_URL';
+import Error from './error';
+import { displayMenu, displayQuiz } from '../features/quiz/displaySlice';
 
 function Menu() {
 
@@ -16,7 +17,7 @@ function Menu() {
     const dispatch = useDispatch();
 
     const url: string | undefined = useContext(AppCtx)?.url;
-    const error: string = quiz.message;
+    const message: string = quiz.message;
     const body: Body = {
         quiz_id: quiz.selected_test,
         name: quiz.user_name      
@@ -48,12 +49,10 @@ function Menu() {
                 dispatch(storeMessage(response.message));
 
                 if (status) {
-                    const menu = document.getElementById("menu")!;
-                    const quiz = document.getElementById("quiz")!;
-
-                    menu.style.display = "none";
-                    quiz.style.display = "flex";
+                    dispatch(displayMenu(false));
+                    dispatch(displayQuiz(true));
                 }
+               
             })
             .catch(err => console.log(err))
 
@@ -70,9 +69,9 @@ function Menu() {
 
     return (
         <div id="menu">
-            <p>
+            <h1>
                 Technical Task
-            </p>
+            </h1>
             <form onSubmit={handleSubmit}>
                 <input type="text" placeholder="Enter your name" value={quiz.user_name} name="user_name" id="user_name" onChange={handleUserInput} />
                 <select name="user_quiz" id="user_quiz" onChange={handleUserInput} defaultValue="-1">
@@ -85,7 +84,7 @@ function Menu() {
                     </option>
                 })}
                 </select>
-                <Error error={ error }/>
+                <Error message={ message }/>
                 <button type='submit'>Start</button>
           </form>           
         </div>

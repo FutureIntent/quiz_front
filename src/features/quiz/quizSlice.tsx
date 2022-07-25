@@ -5,14 +5,20 @@ export interface Quiz {
     message: string,
     tests: any[],
     user_name: string,
-    selected_test: number
+    selected_test: number,
+    questions: any[],
+    questionAmount: number,
+    currentQuestion: number
 }
 
 const initialState: Quiz = {
     message: '',
     tests: [],
     user_name: '',
-    selected_test: -1
+    selected_test: -1,
+    questions: [],
+    questionAmount: 0,
+    currentQuestion: 0
 }
 
 export const quizSlice = createSlice({
@@ -31,10 +37,19 @@ export const quizSlice = createSlice({
         },
         storeMessage: (state, action: PayloadAction<string>) => {
             state.message = action.payload;
+        },
+        storeQuestions: (state, action: PayloadAction<any[]>) => {
+            state.questions = action.payload;
+        },
+        storeAmount: (state, action: PayloadAction<number>) => {
+            state.questionAmount = action.payload;
+        },
+        incrementCurrent: (state) => {
+            state.currentQuestion++;
         }
     }
 })
 
-export const { storeQuiz,storeName, storeTest, storeMessage } = quizSlice.actions
+export const { storeQuiz, storeName, storeTest, storeMessage, storeQuestions, storeAmount, incrementCurrent } = quizSlice.actions
 
 export default quizSlice.reducer

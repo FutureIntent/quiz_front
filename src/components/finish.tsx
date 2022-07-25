@@ -3,7 +3,7 @@ import React from 'react';
 function Finish() {
 
     return (
-        <div id="finish" style={{display: "none"}}>
+        <div>
             Finish
         </div>
     );

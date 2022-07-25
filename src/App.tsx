@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Menu from './components/menu';
 import Quiz from './components/quiz';
+import Finish from './components/finish';
 import { AppCtxProvider } from './context/fetch_URL';
+import type { RootState } from './app/store'
+import { useSelector } from 'react-redux'
 
 function App() {
+
+    let display = useSelector((state: RootState) => state.display);
 
     return (
     <AppCtxProvider>
        <div>
-                <Menu />
-                <Quiz />
+                {display.menu && <Menu />}
+                {display.quiz && <Quiz />}
+                {display.finish && <Finish />}
        </div >
     </AppCtxProvider>
   );

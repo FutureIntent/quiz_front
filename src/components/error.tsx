@@ -2,11 +2,11 @@ import React from 'react'
 
 function Error(props: any) {
 
-    const error: string = props.error;
+    const message: string = props.message;
 
     return (
         <p>
-            { error }
+            { message }
         </p>
         );
 }
