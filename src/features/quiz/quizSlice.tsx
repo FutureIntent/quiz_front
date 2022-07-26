@@ -8,7 +8,8 @@ export interface Quiz {
     selected_test: number,
     questions: any[],
     questionAmount: number,
-    currentQuestion: number
+    currentQuestion: number,
+    options: any[]
 }
 
 const initialState: Quiz = {
@@ -18,7 +19,8 @@ const initialState: Quiz = {
     selected_test: -1,
     questions: [],
     questionAmount: 0,
-    currentQuestion: 0
+    currentQuestion: 0,
+    options: []
 }
 
 export const quizSlice = createSlice({
@@ -46,10 +48,15 @@ export const quizSlice = createSlice({
         },
         incrementCurrent: (state) => {
             state.currentQuestion++;
+        },
+        storeOptions: (state, action: PayloadAction<any[]>) => {
+            state.options = action.payload;
         }
     }
 })
 
-export const { storeQuiz, storeName, storeTest, storeMessage, storeQuestions, storeAmount, incrementCurrent } = quizSlice.actions
+export const { storeQuiz, storeName, storeTest,
+    storeMessage, storeQuestions, storeAmount,
+    incrementCurrent, storeOptions } = quizSlice.actions
 
 export default quizSlice.reducer
