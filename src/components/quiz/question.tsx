@@ -1,9 +1,8 @@
 import React, { useContext, useEffect } from 'react';
-import type { RootState } from '../app/store';
+import type { RootState } from '../../app/store';
 import { useSelector, useDispatch } from 'react-redux';
-import { AppCtx } from '../context/fetch_URL';
-import { storeAmount, storeMessage, storeQuestions } from '../features/quiz/quizSlice';
-import Error from './error';
+import { AppCtx } from '../../context/fetch_URL';
+import { storeQuestionAmount, storeMessage, storeQuestions } from '../../features/quiz/quizSlice';
 
 function Question() {
 
@@ -11,7 +10,6 @@ function Question() {
     const dispatch = useDispatch();
 
     const url: string | undefined = useContext(AppCtx)?.url;
-    const message = quiz.message;
 
     const question: string = quiz.questionAmount > 0 ? quiz.questions[quiz.currentQuestion].question_text : '';
 
@@ -24,7 +22,7 @@ function Question() {
             .then(res => {
                 dispatch(storeMessage(res.message));
                 dispatch(storeQuestions(res.questions));
-                dispatch(storeAmount(res.questions.length));
+                dispatch(storeQuestionAmount(res.questions.length));
             })
             .catch(err => console.log(err))
     }, [quiz.currentQuestion]);

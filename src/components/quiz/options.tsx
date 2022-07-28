@@ -1,9 +1,9 @@
 import React, { useEffect, useContext } from 'react';
-import type { RootState } from '../app/store';
+import type { RootState } from '../../app/store';
 import { useSelector, useDispatch } from 'react-redux';
-import { AppCtx } from './../context/fetch_URL';
-import { storeOptions } from './../features/quiz/quizSlice';
-import Error from './error';
+import { AppCtx } from './../../context/fetch_URL';
+import { storeOptions, storeQuestionsOptions } from './../../features/quiz/quizSlice';
+import Error from './../message/error';
 
 function Options() {
 
@@ -27,10 +27,21 @@ function Options() {
             .catch(err => console.log(err))
     }, [quiz.questions, quiz.currentQuestion]);
 
+    function handleOption(event: any): void {
+        const optionId = event.target.name;
+
+        dispatch(storeQuestionsOptions({
+            question: quiz.questions[quiz.currentQuestion].question_id,
+            option: optionId
+        }))
+    }
+
+    console.log(quiz.questionsOptions);
+
     return (
         <div>
             {quiz.options.map((option) => {
-                return <button name={option.option_id} key={ option.option_id }>
+                return <button name={option.option_id} key={option.option_id} onClick={handleOption}>
                     {option.option_text}
                 </button>
             })}

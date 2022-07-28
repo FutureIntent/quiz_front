@@ -9,7 +9,14 @@ export interface Quiz {
     questions: any[],
     questionAmount: number,
     currentQuestion: number,
-    options: any[]
+    options: any[],
+    questionsOptions: { [key: number]: number },
+    hideQuestion: boolean
+}
+
+interface QuestionsOptions {
+    question: number,
+    option: number
 }
 
 const initialState: Quiz = {
@@ -20,7 +27,9 @@ const initialState: Quiz = {
     questions: [],
     questionAmount: 0,
     currentQuestion: 0,
-    options: []
+    options: [],
+    questionsOptions: {},
+    hideQuestion: true
 }
 
 export const quizSlice = createSlice({
@@ -43,20 +52,27 @@ export const quizSlice = createSlice({
         storeQuestions: (state, action: PayloadAction<any[]>) => {
             state.questions = action.payload;
         },
-        storeAmount: (state, action: PayloadAction<number>) => {
+        storeQuestionAmount: (state, action: PayloadAction<number>) => {
             state.questionAmount = action.payload;
         },
-        incrementCurrent: (state) => {
+        incrementCurrentQuestion: (state) => {
             state.currentQuestion++;
         },
         storeOptions: (state, action: PayloadAction<any[]>) => {
             state.options = action.payload;
+        },
+        storeQuestionsOptions: (state, action: PayloadAction<QuestionsOptions>) => {
+            state.questionsOptions = { ...state.questionsOptions, [action.payload.question]: action.payload.option }
+        },
+        setHideQuestion: (state, action: PayloadAction<boolean>) => {
+            state.hideQuestion = action.payload;
         }
-    }
+    }  
 })
 
 export const { storeQuiz, storeName, storeTest,
-    storeMessage, storeQuestions, storeAmount,
-    incrementCurrent, storeOptions } = quizSlice.actions
+    storeMessage, storeQuestions, storeQuestionAmount,
+    incrementCurrentQuestion, storeOptions, storeQuestionsOptions,
+    setHideQuestion } = quizSlice.actions
 
 export default quizSlice.reducer

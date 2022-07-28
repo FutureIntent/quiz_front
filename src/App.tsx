@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import Menu from './components/menu';
-import Quiz from './components/quiz';
-import Finish from './components/finish';
+import Menu from './components/menu/menu';
+import Quiz from './components/quiz/quiz';
+import Finish from './components/finish/finish';
 import { AppCtxProvider } from './context/fetch_URL';
 import type { RootState } from './app/store'
 import { useSelector } from 'react-redux'

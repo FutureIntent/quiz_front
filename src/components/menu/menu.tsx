@@ -1,10 +1,10 @@
 import React, { useEffect, useContext } from 'react'
-import type { RootState } from '../app/store';
+import type { RootState } from '../../app/store';
 import { useSelector, useDispatch } from 'react-redux';
-import { storeName, storeQuiz, storeTest, storeMessage } from './../features/quiz/quizSlice';
-import { AppCtx } from './../context/fetch_URL';
-import Error from './error';
-import { displayMenu, displayQuiz } from '../features/quiz/displaySlice';
+import { storeName, storeQuiz, storeTest, storeMessage } from './../../features/quiz/quizSlice';
+import { AppCtx } from './../../context/fetch_URL';
+import Error from './../message/error';
+import { displayMenu, displayQuiz } from '../../features/quiz/displaySlice';
 
 function Menu() {
 
