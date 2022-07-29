@@ -11,12 +11,19 @@ export interface Quiz {
     currentQuestion: number,
     options: any[],
     questionsOptions: { [key: number]: number },
-    hideQuestion: boolean
+    hideQuestion: boolean,
+    result: number
 }
 
 interface QuestionsOptions {
     question: number,
     option: number
+}
+
+export interface TestBody {
+    name: string,
+    test_id: number,
+    questions_options: { [key:number]: number }
 }
 
 const initialState: Quiz = {
@@ -29,7 +36,8 @@ const initialState: Quiz = {
     currentQuestion: 0,
     options: [],
     questionsOptions: {},
-    hideQuestion: true
+    hideQuestion: true,
+    result: 0
 }
 
 export const quizSlice = createSlice({
@@ -66,6 +74,9 @@ export const quizSlice = createSlice({
         },
         setHideQuestion: (state, action: PayloadAction<boolean>) => {
             state.hideQuestion = action.payload;
+        },
+        storeResult: (state, action: PayloadAction<number>) => {
+            state.result = action.payload;
         }
     }  
 })
@@ -73,6 +84,6 @@ export const quizSlice = createSlice({
 export const { storeQuiz, storeName, storeTest,
     storeMessage, storeQuestions, storeQuestionAmount,
     incrementCurrentQuestion, storeOptions, storeQuestionsOptions,
-    setHideQuestion } = quizSlice.actions
+    setHideQuestion, storeResult } = quizSlice.actions
 
 export default quizSlice.reducer

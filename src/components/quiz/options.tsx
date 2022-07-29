@@ -36,8 +36,6 @@ function Options() {
         }))
     }
 
-    console.log(quiz.questionsOptions);
-
     return (
         <div>
             {quiz.options.map((option) => {
