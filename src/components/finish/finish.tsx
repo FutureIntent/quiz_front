@@ -1,14 +1,21 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../app/store';
-import { TestBody } from './../../features/quiz/quizSlice';
+import { AppCtx } from '../../context/fetch_URL';
+import { storeMessage, storeResult, TestBody } from './../../features/quiz/quizSlice';
+import Message from './../message/error';
+import Loading from './loading';
 
 
 
 function Finish() {
 
+    const [loading, setLoading] = useState<boolean> (true);
+
     const quiz = useSelector((state: RootState) => state.quiz);
     const dispatch = useDispatch();
+
+    const url: string | undefined = useContext(AppCtx)?.url;
 
     const testBody: TestBody = {
         name: quiz.user_name,
@@ -19,7 +26,21 @@ function Finish() {
     const numOFCorrectAnswers: number = useMemo(() => countCorrectAnswers(quiz.questionAmount, quiz.result), [quiz.result]);
 
     useEffect(() => {
-        console.log(testBody);
+        fetch(url + "/quiz/submitTest", {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(testBody)
+        })
+            .then(res => res.json())
+            .then(res => {
+                setLoading(false);
+                dispatch(storeMessage(res.message));
+                dispatch(storeResult(res.score));
+            })
+            .catch(err => console.log(err))
     }, []);
 
     function countCorrectAnswers(questionAmount: number, testResultInPercent: number): number {
@@ -29,9 +50,14 @@ function Finish() {
     }
 
     return (
-        <div>
-            <h2>Thanks, {quiz.user_name}</h2>
-            <p>You responded correctly to {numOFCorrectAnswers} out of {quiz.questionAmount} questions.</p>
+        <div>{loading
+            ? <Loading />
+            : <div>
+                  <h2>Thanks, {quiz.user_name}</h2>
+                  <p>You responded correctly to {numOFCorrectAnswers} out of {quiz.questionAmount} questions.</p>
+                  <Message message={quiz.message} />
+            </div>
+        }           
         </div>
     );
 }
