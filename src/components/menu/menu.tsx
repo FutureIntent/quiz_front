@@ -5,6 +5,7 @@ import { storeName, storeQuiz, storeTest, storeMessage } from './../../features/
 import { AppCtx } from './../../context/fetch_URL';
 import Error from './../message/error';
 import { displayMenu, displayQuiz } from '../../features/quiz/displaySlice';
+import styles from './../../styles/menu.module.scss';
 
 function Menu() {
 
@@ -68,13 +69,13 @@ function Menu() {
     }
 
     return (
-        <div id="menu">
-            <h1>
+        <div id="menu" className={ styles.menuContainer }>
+            <h1 className={ styles.menuHeader }>
                 Technical Task
             </h1>
-            <form onSubmit={handleSubmit}>
-                <input type="text" placeholder="Enter your name" value={quiz.user_name} name="user_name" id="user_name" onChange={handleUserInput} />
-                <select name="user_quiz" id="user_quiz" onChange={handleUserInput} defaultValue="-1">
+            <form onSubmit={handleSubmit} className={styles.menuForm}>
+                <input className={styles.menuTextField} type="text" placeholder="Enter your name" value={quiz.user_name} name="user_name" id="user_name" onChange={handleUserInput} />
+                <select className={ styles.menuSelectBox } name="user_quiz" id="user_quiz" onChange={handleUserInput} defaultValue="-1">
                   <option disabled hidden value="-1">
                         Choose test
                   </option>
@@ -84,8 +85,8 @@ function Menu() {
                     </option>
                 })}
                 </select>
-                <Error message={ message }/>
-                <button type='submit'>Start</button>
+                <Error message={message} />
+                <button className={ styles.menuButton } type='submit'>Start</button>
           </form>           
         </div>
         );

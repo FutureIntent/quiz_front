@@ -1,11 +1,12 @@
-import React from 'react'
+import React from 'react';
+import styles from './../../styles/message.module.scss';
 
 function Error(props: any) {
 
     const message: string = props.message;
 
     return (
-        <p>
+        <p className={ styles.messageError }>
             { message }
         </p>
         );
