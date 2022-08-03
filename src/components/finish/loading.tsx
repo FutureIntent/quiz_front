@@ -1,11 +1,12 @@
 import React from 'react';
+import styles from './../../styles/loading.module.scss';
 
 function Loading() {
 
     return (
-        <div>
+        <p className={ styles.loadingText }>
             Loading...
-        </div>
+        </p>
         );
 }
 export default Loading;

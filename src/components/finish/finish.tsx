@@ -5,6 +5,7 @@ import { AppCtx } from '../../context/fetch_URL';
 import { storeMessage, storeResult, TestBody } from './../../features/quiz/quizSlice';
 import Message from './../message/error';
 import Loading from './loading';
+import styles from './../../styles/finish.module.scss';
 
 
 
@@ -50,13 +51,13 @@ function Finish() {
     }
 
     return (
-        <div>{loading
+        <div className={ styles.finishContainer }>{loading
             ? <Loading />
-            : <div>
-                  <h2>Thanks, {quiz.user_name}</h2>
-                  <p>You responded correctly to {numOFCorrectAnswers} out of {quiz.questionAmount} questions.</p>
-                  <Message message={quiz.message} />
-            </div>
+            : <div className={ styles.finishWrapper }>
+                <h2 className={styles.finishHeader}>Thanks, {quiz.user_name}!</h2>
+                <p className={ styles.finishText }>You responded correctly to {numOFCorrectAnswers} out of {quiz.questionAmount} questions.</p>
+                <Message message={quiz.message} />
+              </div>
         }           
         </div>
     );

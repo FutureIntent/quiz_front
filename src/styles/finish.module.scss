@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxygen&display=swap');
+
+@mixin TextProperties($size) {
+    font-family: 'Oxygen', sans-serif;
+    font-size: $size;
+    margin: 1%;
+    word-break: break-all;
+    text-align: center;
+}
+
+.finishContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+
+    .finishWrapper {
+        @extend .finishContainer;
+        width: 100%;
+
+        .finishHeader {
+            @include TextProperties(250%);
+        }
+
+        .finishText {
+            @include TextProperties(150%);
+        }
+    }
+}
