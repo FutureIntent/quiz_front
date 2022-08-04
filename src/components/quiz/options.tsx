@@ -3,7 +3,6 @@ import type { RootState } from '../../app/store';
 import { useSelector, useDispatch } from 'react-redux';
 import { AppCtx } from './../../context/fetch_URL';
 import { storeOptions, storeQuestionsOptions } from './../../features/quiz/quizSlice';
-import Error from './../message/error';
 
 function Options() {
 
@@ -43,7 +42,6 @@ function Options() {
                     {option.option_text}
                 </button>
             })}
-            <Error message={ message }/>
         </div>
         );
 }

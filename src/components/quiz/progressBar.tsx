@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../app/store';
+import styles from './../../styles/quiz/progressBar.module.scss';
 
 function ProgressBar() {
 
@@ -11,8 +12,8 @@ function ProgressBar() {
     }, [quiz.currentQuestion, quiz.questionAmount]);
 
     return (
-        <div>
-            <input disabled type="range" value={quiz.currentQuestion + 1} min="0" max={quiz.questionAmount} />
+        <div className={styles.quizProgressBarContainer}>
+            <progress className={styles.quizProgressBar} value={quiz.currentQuestion} max={quiz.questionAmount - 1} />
         </div>
         );
 }

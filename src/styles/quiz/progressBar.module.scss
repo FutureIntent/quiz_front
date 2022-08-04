@@ -1,0 +1,14 @@
+
+.quizProgressBarContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1%;
+
+    .quizProgressBar {
+        width: 30%;
+        height: 2em;
+        accent-color: gray;
+    }
+}

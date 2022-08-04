@@ -5,7 +5,7 @@ import { AppCtx } from '../../context/fetch_URL';
 import { storeMessage, storeResult, TestBody } from './../../features/quiz/quizSlice';
 import Message from './../message/error';
 import Loading from './loading';
-import styles from './../../styles/finish.module.scss';
+import styles from './../../styles/finish/finish.module.scss';
 
 
 

@@ -5,7 +5,8 @@ import { storeName, storeQuiz, storeTest, storeMessage } from './../../features/
 import { AppCtx } from './../../context/fetch_URL';
 import Error from './../message/error';
 import { displayMenu, displayQuiz } from '../../features/quiz/displaySlice';
-import styles from './../../styles/menu.module.scss';
+import styles from './../../styles/menu/menu.module.scss';
+import buttonStyle from './../../styles/button/button.module.scss';
 
 function Menu() {
 
@@ -86,7 +87,7 @@ function Menu() {
                 })}
                 </select>
                 <Error message={message} />
-                <button className={ styles.menuButton } type='submit'>Start</button>
+                <button className={ buttonStyle.defaultButton } type='submit'>Start</button>
           </form>           
         </div>
         );
