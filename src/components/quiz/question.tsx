@@ -3,6 +3,7 @@ import type { RootState } from '../../app/store';
 import { useSelector, useDispatch } from 'react-redux';
 import { AppCtx } from '../../context/fetch_URL';
 import { storeQuestionAmount, storeMessage, storeQuestions } from '../../features/quiz/quizSlice';
+import styles from './../../styles/quiz/question.module.scss';
 
 function Question() {
 
@@ -28,7 +29,7 @@ function Question() {
     }, [quiz.currentQuestion]);
 
     return (
-        <h2>
+        <h2 className={ styles.quizQuestionHeader }>
             {question}
         </h2>
         );

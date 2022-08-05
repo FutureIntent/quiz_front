@@ -1,0 +1,10 @@
+
+.quizOptionsContainer {
+    margin: 1%;
+    display: grid;
+    width: 100%;
+    grid-template-columns: 25% 25%;
+    grid-template-rows: auto;
+    justify-content: space-evenly;
+    row-gap: 2em;
+}

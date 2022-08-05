@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxygen&display=swap');
+
+$shadow: 0em 0.5em 0.5em gray;
+
+.optionButton {
+    font-family: 'Oxygen', sans-serif;
+    font-size: 150%;
+    word-break: break-word;
+    padding: 10%;
+    background-color: transparent;
+    color: gray;
+    border: none;
+    box-shadow: 0em 0.1em 0.1em gray;
+    transition: background-color 1s linear;
+
+    &:hover {
+        //background-image: linear-gradient(to bottom right, #66b3ff, #b3d9ff);
+        background-color: aqua;
+        color: white;
+        box-shadow: $shadow;
+    }
+}
+
+.optionButtonPressed {
+    @extend .optionButton;
+    color: white;
+    background-image: linear-gradient(to bottom right, #66b3ff, #b3d9ff);
+    box-shadow: $shadow;
+}
