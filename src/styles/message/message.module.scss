@@ -3,10 +3,50 @@
 .messageError {
     font-family: 'Oxygen', sans-serif;
     word-break: break-word;
-    font-size: 150%;
+    font-size: 200%;
     color: red;
     margin: 1%;
     min-height: 1.5em;
     width: 100%;
     text-align: center;
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+
+    .messageError {
+        font-size: 230%;
+        min-height: 3em;
+        margin: 1%;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+
+    .messageError {
+        font-size: 180%;
+        min-height: 3em;
+        margin: 1%;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 601px) and (max-width: 767px) {
+
+    .messageError {
+        font-size: 160%;
+        min-height: 3em;
+        margin: 1%;
+    }
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+
+    .messageError {
+        font-size: 130%;
+        min-height: 3em;
+        margin: 1%;
+    }
 }

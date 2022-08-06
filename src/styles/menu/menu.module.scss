@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Oxygen&display=swap');
 
 @mixin menuInput {
-    width: 35%;
+    width: 50%;
     margin: 1%;
     font-family: 'Oxygen', sans-serif;
-    font-size: 150%;
+    font-size: 250%;
     padding-left: 1%;
 }
 
@@ -19,7 +19,7 @@
         text-align: center;
         margin: 1%;
         font-family: 'Oxygen', sans-serif;
-        font-size: 400%;
+        font-size: 500%;
         font-weight: bolder;
     }
 
@@ -48,3 +48,109 @@
         }
     }
 }
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+
+    .menuContainer {
+        .menuHeader {
+            width: 100%;
+            font-size: 400%;
+            margin: 3%;
+        }
+
+        .menuForm {
+            .menuTextField {
+                width: 80%;
+                margin: 1%;
+                font-size: 250%;
+            }
+
+            .menuSelectBox {
+                width: 80%;
+                margin: 1%;
+                font-size: 250%;
+            }
+        }
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+
+    .menuContainer {
+        .menuHeader {
+            width: 100%;
+            font-size: 300%;
+            margin: 3%;
+        }
+
+        .menuForm {
+            .menuTextField {
+                width: 70%;
+                margin: 1%;
+                font-size: 200%;
+            }
+
+            .menuSelectBox {
+                width: 70%;
+                margin: 1%;
+                font-size: 200%;
+            }
+        }
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 601px) and (max-width: 767px) {
+
+    .menuContainer {
+        .menuHeader {
+            width: 100%;
+            font-size: 300%;
+            margin: 3%;
+        }
+
+        .menuForm {
+            .menuTextField {
+                width: 90%;
+                margin: 1%;
+                font-size: 180%;
+            }
+
+            .menuSelectBox {
+                width: 90%;
+                margin: 1%;
+                font-size: 180%;
+            }
+        }
+    }
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+
+    .menuContainer {
+        .menuHeader {
+            width: 100%;
+            font-size: 250%;
+            margin: 5%;
+        }
+
+        .menuForm {
+            .menuTextField {
+                width: 100%;
+                margin: 2%;
+                font-size: 150%;
+            }
+
+            .menuSelectBox {
+                width: 100%;
+                margin: 2%;
+                font-size: 150%;
+            }
+        }
+    } 
+}
+
+

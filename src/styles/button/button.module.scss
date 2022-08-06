@@ -1,8 +1,45 @@
 @import url('https://fonts.googleapis.com/css2?family=Oxygen&display=swap');
 
 .defaultButton {  
-        width: 15%;
+        width: 25%;
         font-family: 'Oxygen', sans-serif;
-        font-size: 150%;
+        font-size: 250%;
         margin: 1%;   
 }
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+
+    .defaultButton {
+        width: 30%;
+        font-size: 250%;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+
+    .defaultButton {
+        width: 30%;
+        font-size: 200%;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 601px) and (max-width: 767px) {
+
+    .defaultButton {
+        width: 40%;
+        font-size: 180%;
+    }
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+
+    .defaultButton {
+        width: 50%;
+        font-size: 150%;
+    }
+}
+
