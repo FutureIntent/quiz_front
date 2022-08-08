@@ -5,7 +5,39 @@
     width: 100%;
     margin: 1%;
     font-family: 'Oxygen', sans-serif;
-    font-size: 300%;
+    font-size: 400%;
     font-weight: bolder;
     word-break: break-word;
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .quizQuestionHeader {
+        font-size: 350%;
+        margin-bottom: 2%;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .quizQuestionHeader {
+        font-size: 350%;
+        margin-bottom: 2%;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 601px) and (max-width: 767px) {
+    .quizQuestionHeader {
+        font-size: 300%;
+        margin-bottom: 2%;
+    }
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .quizQuestionHeader {
+        font-size: 250%;
+        margin-bottom: 3%;
+    }
 }

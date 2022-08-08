@@ -4,7 +4,7 @@ $shadow: 0em 0.5em 0.5em gray;
 
 .optionButton {
     font-family: 'Oxygen', sans-serif;
-    font-size: 150%;
+    font-size: 250%;
     word-break: break-word;
     padding: 10%;
     background-color: transparent;
@@ -26,4 +26,32 @@ $shadow: 0em 0.5em 0.5em gray;
     color: white;
     background-image: linear-gradient(to bottom right, #66b3ff, #b3d9ff);
     box-shadow: $shadow;
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .optionButton {
+        font-size: 250%;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .optionButton {
+        font-size: 250%;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 601px) and (max-width: 767px) {
+    .optionButton {
+        font-size: 200%;
+    }
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .optionButton{
+        font-size: 150%;
+    }
 }
