@@ -6,6 +6,12 @@
     font-family: 'Oxygen', sans-serif;
     font-size: 250%;
     padding-left: 1%;
+    border-style: solid;
+    border-width: 0.05em;
+    border-color: gray;
+    background-color: transparent;
+    color: black;
+    border-radius: 0%;
 }
 
 .menuContainer {
@@ -40,6 +46,7 @@
             -moz-appearance: none;
             appearance: none;
             @include menuInput;
+            border-radius: 10px;
             padding: 2px 1%;
             background-image: url('./../../assets/selectBG.svg');
             background-repeat: no-repeat;
